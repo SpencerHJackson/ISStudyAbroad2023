@@ -1,4 +1,13 @@
+using ISStudyAbroad2023.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<StudentDbContext>(options =>
+{
+    options.UseSqlite(builder.Configuration.GetConnectionString("Default"));
+});
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
