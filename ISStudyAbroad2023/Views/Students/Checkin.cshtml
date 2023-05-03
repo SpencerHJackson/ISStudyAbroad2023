@@ -12,12 +12,13 @@
     <form asp-action="Checkin" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <select name="id">
+            <option disabled selected>SELECT YOUR NAME</option>
         @foreach(var student in Model)
         {
             <option value="@student.StudentId">@student.LastName, @student.FirstName</option>
         }
         </select>
-        <input type="submit" value="Check-In" />
+        <input class="btn btn-primary" type="submit" value="Check-In" />
     </form>
 
 <table class="table">
