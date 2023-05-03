@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ISStudyAbroad2023.Models.Student>
+
+@{
+    ViewData["Title"] = "Checkin";
+}
+
+
+
+<h1>Evening Check-In</h1>
+
+
+    <form asp-action="Checkin" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <select name="id">
+        @foreach(var student in Model)
+        {
+            <option value="@student.StudentId">@student.LastName, @student.FirstName</option>
+        }
+        </select>
+        <input type="submit" value="Check-In" />
+    </form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastCheckin)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastCheckin)
+            </td>
+            @*<td>
+                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

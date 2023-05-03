@@ -18,6 +18,37 @@ namespace ISStudyAbroad2023.Controllers
             _context = context;
         }
 
+        // GET: Students/Checkin
+        public async Task<IActionResult> Checkin()
+        {
+            return _context.Students != null ?
+                          View(await _context.Students.ToListAsync()) :
+                          Problem("Entity set 'StudentDbContext.Students'  is null.");
+        }
+
+        // POST: Students/Checkin/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Checkin(int id)
+        {
+            var student = await _context.Students
+                .FirstOrDefaultAsync(m => m.StudentId == id);
+            if (student == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                student.LastCheckin = DateTime.Now;
+
+                _context.Update(student);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Checkin));
+            }
+            return RedirectToAction(nameof(Checkin));
+        }
+
         // GET: Students
         public async Task<IActionResult> Index()
         {
