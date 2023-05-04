@@ -1,43 +1,44 @@
 ﻿@model ISStudyAbroad2023.Models.Student
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Student";
 }
 
 <center>
 <div class="card text-bg-info mb-3" style="max-width: 40rem;">
     <div class="card-header">Create Student</div>
     <div class="card-body">
-        <h5 class="card-title">Fill out the information below.</h5>
+        @*<h5 class="card-title">Fill out the information below.</h5>*@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
+                <label asp-for="FirstName" class="control-label">First Name</label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
+                <label asp-for="LastName" class="control-label">Last Name</label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="LastCheckin" class="control-label"></label>
                 <input asp-for="LastCheckin" class="form-control" />
                 <span asp-validation-for="LastCheckin" class="text-danger"></span>
-            </div>
+            </div>*@
             <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 </center>
 
-<div>
+@*<div>
     <a asp-action="Index">Back to List</a>
-</div>
+</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

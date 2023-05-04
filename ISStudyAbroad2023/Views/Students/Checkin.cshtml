@@ -12,7 +12,7 @@
     <form asp-action="Checkin" method="post">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <select name="id">
-            <option disabled selected>SELECT YOUR NAME</option>
+            <option disabled selected value="null">--Select Student--</option>
         @foreach(var student in Model)
         {
             <option value="@student.StudentId">@student.LastName, @student.FirstName</option>
@@ -25,13 +25,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastCheckin)
+                Last Check-In
             </th>
             <th></th>
         </tr>

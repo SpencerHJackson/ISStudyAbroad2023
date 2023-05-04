@@ -1,25 +1,25 @@
 ﻿@model IEnumerable<ISStudyAbroad2023.Models.Student>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Student Admin";
 }
 
-<h1>Index</h1>
+<h1>Student Administration</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastCheckin)
+                Last Check-In
             </th>
             <th></th>
         </tr>
