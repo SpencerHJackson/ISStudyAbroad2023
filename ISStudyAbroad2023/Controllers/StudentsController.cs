@@ -35,7 +35,7 @@ namespace ISStudyAbroad2023.Controllers
                 .FirstOrDefaultAsync(m => m.StudentId == id);
             if (student == null)
             {
-                return NotFound();
+                return RedirectToAction();
             }
 
             if (ModelState.IsValid)
