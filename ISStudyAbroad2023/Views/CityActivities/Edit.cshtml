@@ -1,0 +1,49 @@
+﻿@model ISStudyAbroad2023.Models.CityActivity
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>CityActivity</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CityActivityId" />
+            <div class="form-group">
+                <label asp-for="CityId" class="control-label"></label>
+                <select asp-for="CityId" class="form-control" asp-items="ViewBag.CityId"></select>
+                <span asp-validation-for="CityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityActivityName" class="control-label"></label>
+                <input asp-for="CityActivityName" class="form-control" />
+                <span asp-validation-for="CityActivityName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityActivityLocation" class="control-label"></label>
+                <input asp-for="CityActivityLocation" class="form-control" />
+                <span asp-validation-for="CityActivityLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CityActivityDescription" class="control-label"></label>
+                <textarea asp-for="CityActivityDescription" class="form-control"></textarea>
+                <span asp-validation-for="CityActivityDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

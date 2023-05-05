@@ -11,6 +11,8 @@ namespace ISStudyAbroad2023.Models
         [Required]
         public string EventName { get; set; } = string.Empty;
 
+        public bool IsRequired { get; set; }
+
         [Required]
         public DateTime DateAndTime { get; set; }
 

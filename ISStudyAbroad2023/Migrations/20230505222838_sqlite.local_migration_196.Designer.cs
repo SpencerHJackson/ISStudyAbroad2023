@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISStudyAbroad2023.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20230505213544_sqlite.local_migration_759")]
-    partial class sqlitelocal_migration_759
+    [Migration("20230505222838_sqlite.local_migration_196")]
+    partial class sqlitelocal_migration_196
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,6 +47,9 @@ namespace ISStudyAbroad2023.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CityActivityDescription")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("CityActivityLocation")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CityActivityName")
@@ -84,11 +87,16 @@ namespace ISStudyAbroad2023.Migrations
                     b.Property<int?>("EventId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("CommentId");
 
                     b.HasIndex("CityActivityId");
 
                     b.HasIndex("EventId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Comments");
                 });
@@ -108,6 +116,9 @@ namespace ISStudyAbroad2023.Migrations
                     b.Property<string>("EventName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsRequired")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("EventId");
 
@@ -203,6 +214,14 @@ namespace ISStudyAbroad2023.Migrations
                     b.HasOne("ISStudyAbroad2023.Models.Event", null)
                         .WithMany("Comments")
                         .HasForeignKey("EventId");
+
+                    b.HasOne("ISStudyAbroad2023.Models.Student", "Student")
+                        .WithMany()
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("ISStudyAbroad2023.Models.Student", b =>

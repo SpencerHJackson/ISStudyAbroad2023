@@ -17,6 +17,8 @@ namespace ISStudyAbroad2023.Models
         [Required]
         public string CityActivityName { get; set; } = string.Empty;
 
+        public string? CityActivityLocation { get; set; }
+
         [DataType(DataType.MultilineText)]
         public string? CityActivityDescription { get; set; }
 
