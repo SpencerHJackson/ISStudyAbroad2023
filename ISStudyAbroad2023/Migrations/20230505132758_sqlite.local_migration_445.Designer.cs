@@ -3,6 +3,7 @@ using System;
 using ISStudyAbroad2023.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISStudyAbroad2023.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    partial class StudentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230505132758_sqlite.local_migration_445")]
+    partial class sqlitelocal_migration_445
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.16");
@@ -48,7 +50,8 @@ namespace ISStudyAbroad2023.Migrations
                     b.Property<int>("StudentId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("ThoughtDate")
+                    b.Property<DateTime?>("ThoughtDate")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("ThoughtId");

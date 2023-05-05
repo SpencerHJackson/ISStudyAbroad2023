@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ISStudyAbroad2023.Models.Thought>
+
+@{
+    ViewData["Title"] = "Thought Admin";
+}
+
+<h1>Thought Administration</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Student
+            </th>
+            <th>
+                Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoughtDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ThoughtId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ThoughtId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ThoughtId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -3,6 +3,7 @@ using System;
 using ISStudyAbroad2023.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ISStudyAbroad2023.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    partial class StudentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230504220402_sqlite.local_migration_240")]
+    partial class sqlitelocal_migration_240
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.16");
@@ -37,36 +39,6 @@ namespace ISStudyAbroad2023.Migrations
                     b.HasKey("StudentId");
 
                     b.ToTable("Students");
-                });
-
-            modelBuilder.Entity("ISStudyAbroad2023.Models.Thought", b =>
-                {
-                    b.Property<int>("ThoughtId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("ThoughtDate")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ThoughtId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("Thoughts");
-                });
-
-            modelBuilder.Entity("ISStudyAbroad2023.Models.Thought", b =>
-                {
-                    b.HasOne("ISStudyAbroad2023.Models.Student", "Person")
-                        .WithMany()
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Person");
                 });
 #pragma warning restore 612, 618
         }
