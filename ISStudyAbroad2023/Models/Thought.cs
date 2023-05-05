@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Components.Forms;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ISStudyAbroad2023.Models
@@ -9,6 +8,7 @@ namespace ISStudyAbroad2023.Models
         [Key]
         [Required]
         public int ThoughtId { get; set; }
+
         [Required]
         public int StudentId { get; set; }
         [ForeignKey("StudentId")]

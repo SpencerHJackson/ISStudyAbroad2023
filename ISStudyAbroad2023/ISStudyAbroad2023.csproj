@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <None Update="database.sqlite">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
