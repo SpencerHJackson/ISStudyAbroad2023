@@ -22,7 +22,7 @@ namespace ISStudyAbroad2023.Controllers
         public async Task<IActionResult> List()
         {
             return _context.Students != null ?
-                        View(await _context.Students.ToListAsync()) :
+                        View(await _context.Students.OrderBy(x => x.LastName).ThenBy(x => x.FirstName).ToListAsync()) :
                         Problem("Entity set 'StudentDbContext.Students'  is null.");
         }
 
@@ -30,7 +30,7 @@ namespace ISStudyAbroad2023.Controllers
         public async Task<IActionResult> Checkin()
         {
             return _context.Students != null ?
-                          View(await _context.Students.ToListAsync()) :
+                          View(await _context.Students.OrderBy(x => x.LastName).ThenBy(x => x.FirstName).ToListAsync()) :
                           Problem("Entity set 'StudentDbContext.Students'  is null.");
         }
 
