@@ -18,6 +18,14 @@ namespace ISStudyAbroad2023.Controllers
             _context = context;
         }
 
+        //GET: List
+        public async Task<IActionResult> List()
+        {
+            return _context.Citys != null ?
+                        View(await _context.Citys.ToListAsync()) :
+                        Problem("Entity set 'StudentDbContext.Citys'  is null.");
+        }
+
         // GET: Cities
         public async Task<IActionResult> Index()
         {

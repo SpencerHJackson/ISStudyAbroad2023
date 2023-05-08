@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ISStudyAbroad2023.Models.City>
+
+@{
+    ViewData["Title"] = "City List";
+}
+
+<h1>List of Cities & Dates</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                City
+            </th>
+            <th>
+                Arrival
+            </th>
+            <th>
+                Departure
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CityName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeginDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
